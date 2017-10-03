@@ -52,8 +52,9 @@ sub define {
 
 	# Traffic Stats Extension
 	$self->traffic_stats_routes( $r, $version );
-
-	$self->catch_all( $r, $namespace );
+	
+	# If this is called, then the extensions won't have their apis loaded
+	# $self->catch_all( $r, $namespace );
 }
 
 sub ui_routes {

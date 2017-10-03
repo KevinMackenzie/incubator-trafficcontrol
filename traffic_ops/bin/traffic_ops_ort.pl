@@ -386,6 +386,22 @@ sub process_cfg_file {
 	my @db_lines_missing   = @{ shift(@return) };
 	my @disk_lines_missing = @{ shift(@return) };
 
+	print "Config File $cfg_file: \n";
+	print "Begin DB Lines Missing: \n";
+	if ( scalar @db_lines_missing == 0 ) {
+		foreach my $line (@db_lines_missing) {
+			print "  $line\n";
+		}
+	}
+	print "End DB Lines Missing \n";
+	print "Begin Disk Lines Missing: \n";
+	if (scalar @disk_lines_missing == 0 ) {
+		foreach my $line (@disk_lines_missing) {
+			print "  $line\n";
+		}
+	}
+	print "End Disk Lines Missing \n";
+
 	if ( scalar(@disk_lines_missing) || scalar(@db_lines_missing) ) {
 		$cfg_file_tracker->{$cfg_file}->{'change_needed'}++;
 		( $log_level >> $DEBUG ) && print "DEBUG $file needs updated.\n";
